@@ -76,12 +76,12 @@ class Sender:
             raise TypeError('"value" must be an int or a float, not a {}'.format(
                 type(value).__name__))
 
-        tags_strs = [u';{}={}'.format(k, v) for k, v in sorted(tags.items())]
+        tags_strs = [u';{0}={1}'.format(k, v) for k, v in sorted(tags.items())]
         if any(_has_whitespace(t) for t in tags_strs):
             raise ValueError('"tags" keys and values must not have whitespace in them')
         tags_suffix = ''.join(tags_strs)
 
-        message = u'{}{}{} {} {}\n'.format(
+        message = u'{0}{1}{2} {3} {4}\n'.format(
             self.prefix + '.' if self.prefix else '',
             metric,
             tags_suffix,
